@@ -3,3 +3,6 @@
 # Freeshell
 
 This version of Freeshell is a replacement of Freeshell Classic (v2)
+
+## REQUIREMENTS
+Java 20 is required for running Freeshell.
