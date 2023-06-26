@@ -5,13 +5,12 @@ var version = "v0.1"
 fun main() {
     println("fs.kotlin $version")
 
-    var isLooping = true
-    while (isLooping) {
+    while (true) {
         var input = readln()
 
         when (input) {
             "help" -> help(version)
-            "exit" -> isLooping = false
+            "exit" -> break;
             else -> println("KTFS01: $input not found. type \"help\" for help.")
         }
     }
