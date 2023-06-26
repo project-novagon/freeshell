@@ -10,6 +10,6 @@ enum class Color(private val Code: String) {
     WHITE("\u001B[37m");
 
     override fun toString(): String {
-        return escapeCode
+        return Code
     }
 }
