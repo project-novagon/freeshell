@@ -12,10 +12,10 @@ fun main() {
         var input = readln()
 
         when (input) {
-            "help" -> help(version)
-            "exit" -> break
+            "help"     -> help(version)
+            "exit"     -> break
             "fs about" -> about(version)
-            else -> println("FS01: $input not found. type \"help\" for help.")
+            else       -> println("FS01: $input not found. type \"help\" for help.")
         }
     }
 }
