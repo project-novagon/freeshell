@@ -11,3 +11,11 @@ fun about(version: String){
             "..::::::::..:::::..::........::........:::......:::..:::::..::........::........::........::")
     println("freeshell $version");
 }
+
+fun help(version: String) {
+    println("Freeshell $version");
+    println("Commands:");
+    println("exit: Exits the shell");
+    println("fs about: About freeshell");
+
+}
