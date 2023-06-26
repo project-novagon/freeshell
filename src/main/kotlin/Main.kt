@@ -1,3 +1,4 @@
+import commands.about
 import commands.help
 
 var version = "v0.1"
@@ -11,6 +12,7 @@ fun main() {
         when (input) {
             "help" -> help(version)
             "exit" -> break
+            "about" -> about(version)
             else -> println("KTFS01: $input not found. type \"help\" for help.")
         }
     }
