@@ -18,7 +18,7 @@ fun main() {
             "help"     -> help(version)
             "exit"     -> break
             "fs about" -> about(version)
-            else       -> println("FS01: $input not found. type \"help\" for help.")
+            else       -> println("\u001B[31mFS01\u001B[0m: $input not found. type \"help\" for help.")
         }
     }
 }
