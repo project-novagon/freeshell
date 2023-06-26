@@ -1,8 +1,11 @@
 import commands.about
 import commands.help
+import java.net.InetAddress
 
 var version = "v3.0.0.1.od"
-var cursor  = "~>"
+var username = System.getProperty("user.name")
+var computername = InetAddress.getLocalHost().hostName
+var cursor  = "($username @ $computername ) ~>"
 
 fun main() {
     println("fs.kotlin $version")
