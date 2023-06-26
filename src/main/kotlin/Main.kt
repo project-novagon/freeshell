@@ -1,7 +1,7 @@
 import commands.about
 import commands.help
 
-var version = "v0.1"
+var version = "v3.0.0.1.od"
 
 fun main() {
     println("fs.kotlin $version")
