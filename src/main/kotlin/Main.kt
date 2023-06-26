@@ -1,3 +1,4 @@
+import api.printConsoleError
 import commands.about
 import commands.help
 import java.net.InetAddress
@@ -11,14 +12,14 @@ fun main() {
     println("fs.kotlin $version")
 
     while (true) {
-        print("\u001B[32m" + cursor + " \u001B[0m")
+        print("${Color.GREEN} $cursor ${Color.WHITE}")
         var input = readln()
 
         when (input) {
             "help"     -> help(version)
             "exit"     -> break
             "fs about" -> about(version)
-            else       -> println("\u001B[31mFS01\u001B[0m: $input not found. type \"help\" for help.")
+            else       -> printConsoleError("FS01", input)
         }
     }
 }
