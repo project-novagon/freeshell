@@ -15,7 +15,7 @@ fun main() {
             "help" -> help(version)
             "exit" -> break
             "fs about" -> about(version)
-            else -> println("KTFS01: $input not found. type \"help\" for help.")
+            else -> println("FS01: $input not found. type \"help\" for help.")
         }
     }
 }
