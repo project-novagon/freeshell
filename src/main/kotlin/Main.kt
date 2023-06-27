@@ -15,7 +15,7 @@ fun main() {
     println("fs.kotlin $version")
 
     while (true) {
-        print("${Color.GREEN} $cursor ${Color.WHITE}")
+        print("${ANSIHeaders.GREEN} $cursor ${ANSIHeaders.WHITE}")
         var input = readln()
 
         when (input) {

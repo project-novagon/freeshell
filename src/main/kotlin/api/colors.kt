@@ -1,4 +1,4 @@
-enum class Color(private val Code: String) {
+enum class ANSIHeaders(private val Code: String) {
     RESET("\u001B[0m"),
     BLACK("\u001B[30m"),
     RED("\u001B[31m"),
