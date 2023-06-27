@@ -42,9 +42,9 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
                     when (command[1]) {
                         "help" -> help(version)
                         "about" -> about(version)
-                    } catch (e: Exception) {
-                        help(version)
-                    }
+                    } 
+                } catch (e: Exception) {
+                    help(version)
                 }
             }
 
