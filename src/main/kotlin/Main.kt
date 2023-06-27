@@ -6,6 +6,8 @@ import java.lang.ProcessBuilder.Redirect
 import java.util.concurrent.TimeUnit
 import java.io.File
 import kotlin.system.exitProcess
+import api.fpm.aboutFPM
+import api.fpm.listCommands
 
 var version = "v3.0.0.3.od"
 var username = System.getProperty("user.name")
@@ -15,7 +17,7 @@ var homedir = System.getProperty("user.home")
 var cursor  = "${ANSIHeaders.BLUE}($username @ $computername at $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
 var userinf = ""
 
-var shellCommands = arrayOf("fs", "exit", "cd")
+var shellCommands = arrayOf("fs", "exit", "cd", "fpm")
 
 fun main() {
     while (true) {
@@ -54,13 +56,23 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
                 }
             }
 
+            "fpm" -> {
+                try {
+                when (command[1]) {
+                    "about" -> aboutFPM()
+                }
+                }catch (e: Exception){
+                    listCommands( )
+                }
+            }
+
             "exit" -> exitProcess(0)
         }
     } else {
         try {
             command.joinToString(separator=" ").run(File(dir))
         } catch (e: Exception) {
-            printConsoleError("FS02", command.joinToString(separator=" "))
+            printConsoleError("FS01", command.joinToString(separator=" "))
         }
     }
 }

@@ -1,9 +1,6 @@
 package api.fpm
-fun fpm(subcommand: List<String>){
-    when(subcommand[0]){
-        "about"   -> aboutFPM()
-    }
-}
+
+import ANSIHeaders
 
 fun aboutFPM() {
     println("'########:'########::'##::::'##:\n" +
@@ -15,6 +12,13 @@ fun aboutFPM() {
             " ##::::::: ##:::::::: ##:::: ##:\n" +
             "..::::::::..:::::::::..:::::..::")
     println("Freeshell Plugin Manager")
-    println("by dvnlx, mkukiro")
+    println("by dvnlx, NotHavocc")
 
+}
+
+fun listCommands() {
+    println("${ANSIHeaders.BOLD}Commands:${ANSIHeaders.RESET}")
+    println("about: opens about page")
+    println("install -p/-t packageName: installs package. -p: package, -t: theme")
+    println("search -p/-t packageName: searches packages. -p: package, -t: theme")
 }
