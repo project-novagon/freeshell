@@ -21,4 +21,5 @@ fun listCommands() {
     println("about: opens about page")
     println("install -p/-t packageName: installs package. -p: package, -t: theme")
     println("search -p/-t packageName: searches packages. -p: package, -t: theme")
+    println("${ANSIHeaders.YELLOW}! WARN: WORK IN PROGRESS${ANSIHeaders.RESET}")
 }
