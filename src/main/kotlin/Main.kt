@@ -14,7 +14,7 @@ var username = System.getProperty("user.name")
 var computername = InetAddress.getLocalHost().hostName
 var dir = System.getProperty("user.dir")
 var homedir = System.getProperty("user.home")
-var cursor  = "${ANSIHeaders.BLUE}($username @ $computername at $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
+var cursor  = "${ANSIHeaders.CYAN}($username @ $computername : $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
 var userinf = ""
 
 var shellCommands = arrayOf("fs", "exit", "cd", "fpm")
