@@ -37,9 +37,6 @@ private fun executeCommand(command: String) {
             println(line)
         }
 
-        if (process.waitFor() != 0) {
-            printConsoleError("FS01", command)
-        }
     } catch (e: java.io.IOException) {
         printConsoleError("FS02", command)
     }
