@@ -14,7 +14,7 @@ var username = System.getProperty("user.name")
 var computername = InetAddress.getLocalHost().hostName
 var dir = System.getProperty("user.dir")
 var homedir = System.getProperty("user.home")
-var cursor  = "($username @ $computername // $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
+var cursor  = "${ANSIHeaders.BLUE}($username @ $computername // $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
 var userinf = ""
 
 var shellCommands = arrayOf("fs", "exit", "cd")
@@ -23,13 +23,8 @@ fun main() {
     println("fs.kotlin $version")
 
     while (true) {
-<<<<<<< HEAD
-        print("$cursor")
-        var input = readln().split(" ")
-=======
         print(cursor)
         var input = readln()
->>>>>>> 8bf868488819cd315d1219e63336c472bcaa60fa
 
         if (shellCommands.contains(input[0])) {
             executeCommand(true, input)
