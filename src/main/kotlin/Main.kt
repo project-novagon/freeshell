@@ -8,7 +8,8 @@ import java.io.InputStreamReader
 var version = "v3.0.0.2.od"
 var username = System.getProperty("user.name")
 var computername = InetAddress.getLocalHost().hostName
-var cursor  = "($username @ $computername ) ~>"
+var dir = "~/"
+var cursor  = "($username @ $computername // $dir ) ~>"
 
 fun main() {
     println("fs.kotlin $version")
