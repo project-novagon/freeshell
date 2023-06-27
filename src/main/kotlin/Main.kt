@@ -21,10 +21,10 @@ fun main() {
 
         when (input) {
             "fs help"  -> help(version)
-            "fs exit"  -> break
+            "exit"     -> break
             "fs about" -> about(version)
             else       -> executeCommand(input)
-            // else       -> printConsoleError("FS01", input)
+            // else    -> printConsoleError("FS01", input)
         }
     }
 }
