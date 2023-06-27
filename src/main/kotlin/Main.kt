@@ -30,6 +30,7 @@ private fun executeCommand(command: String) {
     val process = Runtime.getRuntime().exec(command)
     val reader = BufferedReader(InputStreamReader(process.inputStream))
     var line: String?
+    try {
 
     while (reader.readLine().also { line = it } != null) {
         println(line)
@@ -37,5 +38,8 @@ private fun executeCommand(command: String) {
 
     if (process.waitFor() != 0) {
         api.printConsoleError("FS01", command)
+    }
+    }catch() {
+        printConsoleError()
     }
 }
