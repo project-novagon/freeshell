@@ -8,6 +8,7 @@
 ![GitHub release (latest by SemVer including pre-releases)](https://img.shields.io/github/downloads-pre/project-novagon/freeshell/latest/total?label=Downloads%20for%20latest%20release&color=green)
 ![GitHub contributors](https://img.shields.io/github/contributors/project-novagon/freeshell?color=lightblue)
 ![Static Badge](https://img.shields.io/badge/Freeshell-Open%20Source%20Is%20Love-blue)
+![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/project-novagon/freeshell?label=Latest%20Tag&color=purple)
 
 This version of Freeshell is a replacement of Freeshell Classic (v2)
 
