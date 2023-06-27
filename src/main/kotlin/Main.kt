@@ -20,8 +20,6 @@ var userinf = ""
 var shellCommands = arrayOf("fs", "exit", "cd")
 
 fun main() {
-    println("fs.kotlin $version")
-
     while (true) {
         print(cursor)
         var input = readln().split(" ")
