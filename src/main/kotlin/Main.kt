@@ -22,24 +22,25 @@ fun main() {
             "fs exit"  -> break
             "fs about" -> about(version)
             else       -> executeCommand(input)
+            // else       -> printConsoleError("FS01", input)
         }
     }
 }
 
 private fun executeCommand(command: String) {
-    val process = Runtime.getRuntime().exec(command)
-    val reader = BufferedReader(InputStreamReader(process.inputStream))
-    var line: String?
     try {
+        val process = Runtime.getRuntime().exec(command)
+        val reader = BufferedReader(InputStreamReader(process.inputStream))
+        var line: String?
 
-    while (reader.readLine().also { line = it } != null) {
-        println(line)
-    }
+        while (reader.readLine().also { line = it } != null) {
+            println(line)
+        }
 
-    if (process.waitFor() != 0) {
-        api.printConsoleError("FS01", command)
-    }
-    }catch() {
-        printConsoleError()
+        if (process.waitFor() != 0) {
+            printConsoleError("FS01", command)
+        }
+    } catch (e: java.io.IOException) {
+        printConsoleError("FS02", command)
     }
 }
