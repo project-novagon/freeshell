@@ -24,7 +24,7 @@ fun main() {
 
     while (true) {
         print(cursor)
-        var input = readln()
+        var input = readln().split(" ")
 
         if (shellCommands.contains(input[0])) {
             executeCommand(true, input)
@@ -47,10 +47,10 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
             "cd" -> {
                 try {
                     dir = command[1]
-                    cursor  = "($username @ $computername // $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
+                    cursor  = "${ANSIHeaders.BLUE}($username @ $computername // $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
                 } catch (e: Exception) {
                     dir = homedir 
-                    cursor  = "($username @ $computername // $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
+                    cursor  = "${ANSIHeaders.BLUE}($username @ $computername // $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
                 }
             }
 
