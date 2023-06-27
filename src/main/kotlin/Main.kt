@@ -38,9 +38,13 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
     if (isInternal) {
         when (command[0]) {
             "fs" -> {
-                when (command[1]) {
-                    "help" -> help(version)
-                    "about" -> about(version)
+                try {
+                    when (command[1]) {
+                        "help" -> help(version)
+                        "about" -> about(version)
+                    } catch (e: Exception) {
+                        help(version)
+                    }
                 }
             }
 
