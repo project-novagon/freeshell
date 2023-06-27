@@ -16,7 +16,7 @@ fun main() {
     println("fs.kotlin $version")
 
     while (true) {
-        print("$cursor")
+        print(cursor)
         var input = readln()
 
         when (input) {
