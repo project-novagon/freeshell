@@ -9,13 +9,14 @@ var version = "v3.0.0.2.od"
 var username = System.getProperty("user.name")
 var computername = InetAddress.getLocalHost().hostName
 var dir = "~/"
-var cursor  = "($username @ $computername // $dir ) ~>"
+var cursor  = "($username @ $computername // $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
+var userinf = ""
 
 fun main() {
     println("fs.kotlin $version")
 
     while (true) {
-        print("${ANSIHeaders.GREEN} $cursor ${ANSIHeaders.WHITE}")
+        print("$cursor")
         var input = readln()
 
         when (input) {
