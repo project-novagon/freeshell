@@ -23,8 +23,13 @@ fun main() {
     println("fs.kotlin $version")
 
     while (true) {
+<<<<<<< HEAD
         print("$cursor")
         var input = readln().split(" ")
+=======
+        print(cursor)
+        var input = readln()
+>>>>>>> 8bf868488819cd315d1219e63336c472bcaa60fa
 
         if (shellCommands.contains(input[0])) {
             executeCommand(true, input)
