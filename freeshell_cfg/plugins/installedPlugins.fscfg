@@ -1,0 +1,9 @@
+plugins {
+    plugin {
+        fullName: "org.novagon.fpm",
+        shortName: "Freeshell Package Manager [FPM]"
+        desc: "The FPM Plugin, install other plugins with FPM by running 'fpm install -p <plugin>' [DEFAULT]"
+        publisher: "Project Novagon"
+        version: @1.0.0.1
+    }
+}
