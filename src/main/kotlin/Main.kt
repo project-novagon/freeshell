@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 import java.io.File
 import kotlin.system.exitProcess
 
-var version = "v3.0.0.2.od"
+var version = "v3.0.0.3.od"
 var username = System.getProperty("user.name")
 var computername = InetAddress.getLocalHost().hostName
 var dir = System.getProperty("user.dir")
