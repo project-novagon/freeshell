@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="freeshell">
-    <output-path>$PROJECT_DIR$/out/artifacts/freeshell</output-path>
+  <artifact type="jar" build-on-make="true" name="freeshell">
+    <output-path>$PROJECT_DIR$/out/production/freeshell/jar</output-path>
     <root id="archive" name="freeshell.jar">
       <element id="module-output" name="freeshell" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.8.21/kotlin-stdlib-jdk8-1.8.21.jar" path-in-jar="/" />
