@@ -1,4 +1,4 @@
-plugins {
+profile: default.plugins {
     plugin {
         fullName: "org.novagon.fpm",
         shortName: "Freeshell Package Manager [FPM]"

@@ -1,0 +1,5 @@
+profile: default {
+    colorTheme: "default_ui5"
+    cursor: "${ANSIHeaders.CYAN}($username @ $computername : $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
+    plugins: ref("./plugins/installedPlugins.fscfg")
+}
