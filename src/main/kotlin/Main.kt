@@ -9,7 +9,7 @@ import kotlin.system.exitProcess
 import api.fpm.aboutFPM
 import api.fpm.listCommands
 
-var version = "v3.0.0.3.od"
+var version = "v3.0.0.4.od"
 var username = System.getProperty("user.name")
 var computername = InetAddress.getLocalHost().hostName
 var dir = System.getProperty("user.dir")
