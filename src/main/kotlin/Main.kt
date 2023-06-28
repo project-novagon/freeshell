@@ -15,14 +15,16 @@ var computername = InetAddress.getLocalHost().hostName
 var dir = System.getProperty("user.dir")
 var homedir = System.getProperty("user.home")
 var cursor  = "${ANSIHeaders.CYAN}($username @ $computername : $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
-var userinf = ""
-
 var shellCommands = arrayOf("fs", "exit", "cd", "fpm")
 
-fun main() {
+fun main(args: Array<String>) {
+    if (args[0] == "-d")
+    {
+        println("DEBUG: All Argumets: ${args.joinToString()}")
+    }
     while (true) {
         print(cursor)
-        var input = readln().split(" ")
+        val input = readln().split(" ")
 
         if (shellCommands.contains(input[0])) {
             executeCommand(true, input)
