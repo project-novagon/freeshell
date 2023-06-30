@@ -23,6 +23,8 @@ fun main(args: Array<String>){
     if (!freeshellLinuxPath.exists() || !freeshellWindowsPath.exists()) {
         println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
         Thread.sleep(2000)
+        //TODO: make the rest of the setup
+        //curl -OJLs https://github.com/project-novagon/fpm/releases/download/v1.1.0/fpm.py
     } else {
 
         while (true) {
