@@ -18,9 +18,9 @@ var cursor  = "${ANSIHeaders.CYAN}($username @ $computername : $dir )${ANSIHeade
 var shellCommands = arrayOf("fs", "exit", "cd", "fpm")
 
 fun main(args: Array<String>) {
-    if (args[0] == "-d")
+    if(args.equals("-d") && args.isNotEmpty())
     {
-        println("DEBUG: All Argumets: ${args.joinToString()}")
+        println("DEBUG MODE ENABLED.")
     }
     while (true) {
         print(cursor)
