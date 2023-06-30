@@ -30,7 +30,7 @@ fun main(args: Array<String>){
         println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
         Thread.sleep(2000)
         //TODO: make the rest of the setup
-        //curl -OJLs https://github.com/project-novagon/fpm/releases/download/v1.1.0/fpm.py
+        //curl -OJLs https://github.com/project-novagon/fpm/releases/latest/download/fpm.py
     } else {
 
         while (true) {
