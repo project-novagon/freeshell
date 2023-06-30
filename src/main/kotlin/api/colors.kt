@@ -12,7 +12,6 @@ enum class ANSIHeaders(private val Code: String) {
     MAGENTA("\u001B[35m"),
     CYAN("\u001B[36m"),
     WHITE("\u001B[37m");
-
     override fun toString(): String {
         return Code
     }

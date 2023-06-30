@@ -15,12 +15,14 @@ var cursor  = "${ANSIHeaders.CYAN}($username @ $computername : $dir )${ANSIHeade
 var shellCommands = arrayOf("fs", "exit", "cd", "fpm")
 var freeshellLinuxPath = File("/user/$username/.local/share/.freeshell")
 var freeshellWindowsPath = File("C:/Users/$username/AppData/Roaming/.freeshell")
-fun main(args: Array<String>) {
+
+fun main(args: Array<String>){
     if ("-d" in args && args.isNotEmpty()) {
         println("DEBUG MODE ENABLED.")
     }
     if (!freeshellLinuxPath.exists() || !freeshellWindowsPath.exists()) {
         println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
+        Thread.sleep(2000)
     } else {
 
         while (true) {
