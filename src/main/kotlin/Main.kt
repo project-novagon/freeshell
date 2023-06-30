@@ -8,19 +8,25 @@ import java.io.File
 import kotlin.system.exitProcess
 var version = "v3.0.0.4.od"
 var username = System.getProperty("user.name")
+var osname = System.getProperty("os.name")
 var computername = InetAddress.getLocalHost().hostName
 var dir = System.getProperty("user.dir")
 var homedir = System.getProperty("user.home")
 var cursor  = "${ANSIHeaders.CYAN}($username @ $computername : $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
 var shellCommands = arrayOf("fs", "exit", "cd", "fpm")
-var freeshellLinuxPath = File("/user/$username/.local/share/.freeshell")
-var freeshellWindowsPath = File("C:/Users/$username/AppData/Roaming/.freeshell")
+var freeshellLinuxPath = File("/home/$username/.local/share/.freeshell")
+var freeshellWindowsPath = File("%APPDATA%\\.freeshell")
 
 fun main(args: Array<String>){
+    if (osname.startsWith("Windows")){
+        println("${ANSIHeaders.YELLOW} NOTE: ${ANSIHeaders.RESET}Windows commands are not well supported")
+    }
     if ("-d" in args && args.isNotEmpty()) {
         println("DEBUG MODE ENABLED.")
+        println(username)
+        println(osname)
     }
-    if (!freeshellLinuxPath.exists() || !freeshellWindowsPath.exists()) {
+    if (!freeshellLinuxPath.exists() && freeshellLinuxPath.isDirectory || !freeshellWindowsPath.exists() && freeshellWindowsPath.isDirectory) {
         println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
         Thread.sleep(2000)
         //TODO: make the rest of the setup
