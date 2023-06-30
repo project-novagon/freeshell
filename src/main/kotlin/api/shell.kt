@@ -1,10 +1,9 @@
-import api.printConsoleError
+package api
 import commands.about
 import commands.help
-import java.net.InetAddress
-import java.lang.ProcessBuilder.Redirect
-import java.util.concurrent.TimeUnit
 import java.io.File
+import java.net.InetAddress
+import java.util.concurrent.TimeUnit
 import kotlin.system.exitProcess
 var version = "v3.0.0.4.od"
 var username = System.getProperty("user.name")
@@ -12,26 +11,20 @@ var computername = InetAddress.getLocalHost().hostName
 var dir = System.getProperty("user.dir")
 var homedir = System.getProperty("user.home")
 var cursor  = "${ANSIHeaders.CYAN}($username @ $computername : $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
-var shellCommands = arrayOf("fs", "exit", "cd", "fpm")
-var freeshellLinuxPath = File("/user/$username/.local/share/.freeshell")
-var freeshellWindowsPath = File("C:/Users/$username/AppData/Roaming/.freeshell")
+var shellCommands = arrayOf("fs", "exit", "cd")
 fun main(args: Array<String>) {
-    if ("-d" in args && args.isNotEmpty()) {
+    if("-d" in args && args.isNotEmpty())
+    {
         println("DEBUG MODE ENABLED.")
     }
-    if (!freeshellLinuxPath.exists() || !freeshellWindowsPath.exists()) {
-        println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
-    } else {
+    while (true) {
+        print(cursor)
+        val input = readln().split(" ")
 
-        while (true) {
-            print(cursor)
-            val input = readln().split(" ")
-
-            if (shellCommands.contains(input[0])) {
-                executeCommand(true, input)
-            } else {
-                executeCommand(false, input)
-            }
+        if (shellCommands.contains(input[0])) {
+            executeCommand(true, input)
+        } else {
+            executeCommand(false, input)
         }
     }
 }
@@ -44,7 +37,7 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
                     when (command[1]) {
                         "help" -> help(version)
                         "about" -> about(version)
-                    } 
+                    }
                 } catch (e: Exception) {
                     help(version)
                 }
@@ -55,10 +48,11 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
                     dir = command[1]
                     cursor  = "${ANSIHeaders.BLUE}($username @ $computername // $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
                 } catch (e: Exception) {
-                    dir = homedir 
+                    dir = homedir
                     cursor  = "${ANSIHeaders.BLUE}($username @ $computername // $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
                 }
             }
+
 
             "exit" -> exitProcess(0)
         }
@@ -73,10 +67,10 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
 
 fun String.run(workingDir: File? = null) {
     val process = ProcessBuilder(*split(" ").toTypedArray())
-            .directory(workingDir)
-            .redirectOutput(Redirect.INHERIT)
-            .redirectError(Redirect.INHERIT)
-            .start()
+        .directory(workingDir)
+        .redirectOutput(ProcessBuilder.Redirect.INHERIT)
+        .redirectError(ProcessBuilder.Redirect.INHERIT)
+        .start()
     if (!process.waitFor(10, TimeUnit.SECONDS)) {
         process.destroy()
         throw RuntimeException("execution timed out: $this")
