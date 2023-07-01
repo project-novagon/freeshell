@@ -29,7 +29,7 @@ val fshWindowsExists = freeshellWindowsPath.exists()
 var fpmIsEnabled = true;
 fun main(args: Array<String>){
     if (osname.startsWith("Windows")){
-        println("${ANSIHeaders.YELLOW} NOTE: ${ANSIHeaders.RESET}Windows commands are not well supported")
+        t.println("${yellow("NOTE:")} Windows commands are not well supported")
     }
     if ("-d" in args && args.isNotEmpty()) {
         println("DEBUG MODE ENABLED.")
@@ -41,11 +41,11 @@ fun main(args: Array<String>){
 
     }
 
-    if (!fshLinuxExists || !freeshellLinuxPath.isDirectory && !fshWindowsExists || !freeshellWindowsPath.isDirectory) {
-        println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
+    if (!fshLinuxExists && !freeshellLinuxPath.isDirectory && !fshWindowsExists && !freeshellWindowsPath.isDirectory) {
+        t.println("${yellow("WARN:")} Freeshell Config not found. Continuing with setup.")
         Thread.sleep(2000)
-        println("${ANSIHeaders.BOLD} Freeshell Setup ${ANSIHeaders.RESET}")
-        println("---")
+        println(bold("Freeshell Setup"))
+        t.println("---")
         if (osname.startsWith("Windows")) {
             freeshellWindowsPath.mkdir();
         } else {
@@ -58,7 +58,7 @@ fun main(args: Array<String>){
 
             println("Choose your fpm version (check https://github.com/project-novagon/fpm/releases/latest for the latest release)")
             val fpmVer = readln()
-            println("${ANSIHeaders.BLUE} i:${ANSIHeaders.RESET} Installing FPM...")
+            t.println("${blue("i:")} Installing FPM...")
             // Fuel.download("https://github.com/project-novagon/fpm/releases/download/v$version/fpm.py")
             val progress = t.progressAnimation {
                 text("my-file.iso")
@@ -68,7 +68,7 @@ fun main(args: Array<String>){
                 speed("B/s")
                 timeRemaining()
             }
-            println("${ANSIHeaders.GREEN} !:${ANSIHeaders.RESET} FPM Installed")
+            t.println("${green("!:")} FPM Installed")
         }
         else {
             t.println("Skipping FPM.")
