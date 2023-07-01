@@ -14,9 +14,10 @@ var dir = System.getProperty("user.dir")
 var homedir = System.getProperty("user.home")
 var cursor  = "${ANSIHeaders.CYAN}($username @ $computername : $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
 var shellCommands = arrayOf("fs", "exit", "cd", "fpm")
-var freeshellLinuxPath = File("/home/$username/.local/share/.freeshell")
-var freeshellWindowsPath = File("%APPDATA%\\.freeshell")
-
+val freeshellLinuxPath = File("/home/$username/.local/share/.freeshell")
+val freeshellWindowsPath = File("%APPDATA%\\.freeshell")
+val fshLinuxExists = freeshellLinuxPath.exists()
+val fshWindowsExists = freeshellWindowsPath.exists()
 fun main(args: Array<String>){
     if (osname.startsWith("Windows")){
         println("${ANSIHeaders.YELLOW} NOTE: ${ANSIHeaders.RESET}Windows commands are not well supported")
@@ -31,10 +32,9 @@ fun main(args: Array<String>){
 
     }
 
-    if (!freeshellLinuxPath.exists() && freeshellLinuxPath.isDirectory || !freeshellWindowsPath.exists() && freeshellWindowsPath.isDirectory) {
+    if (!fshLinuxExists && freeshellLinuxPath.isDirectory || !fshWindowsExists && freeshellWindowsPath.isDirectory) {
         println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
         Thread.sleep(2000)
-        clear()
         //TODO: make the rest of the setup
         //curl -OJLs https://github.com/project-novagon/fpm/releases/download/v1.2.0/fpm.py
     } else {
