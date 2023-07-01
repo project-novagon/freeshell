@@ -37,9 +37,16 @@ fun main(args: Array<String>){
         Thread.sleep(2000)
         println("${ANSIHeaders.BOLD} Freeshell Setup ${ANSIHeaders.RESET}")
         println("---")
+        if (osname.startsWith("Windows")){
+            freeshellWindowsPath.mkdir();
+        }else{
+            freeshellLinuxPath.mkdir()
+        }
         println("Freeshell Setup 1. FPM")
+
         println("Choose your fpm version (check https://github.com/project-novagon/fpm/releases/latest for the latest release)")
         val fpmVer = readln()
+        Runtime.getRuntime().exec("curl -JLs https://github.com/project-novagon/fpm/releases/download/v$fpmVer/fpm.py");
         //TODO: make the rest of the setup
         //curl -OJLs https://github.com/project-novagon/fpm/releases/download/v1.2.0/fpm.py
     } else {
