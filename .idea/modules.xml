@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/freeshell.iml" filepath="$PROJECT_DIR$/freeshell.iml" />
       <module fileurl="file://$PROJECT_DIR$/freeshell_cfg/freeshell_cfg.iml" filepath="$PROJECT_DIR$/freeshell_cfg/freeshell_cfg.iml" />
     </modules>
   </component>
