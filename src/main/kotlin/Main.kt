@@ -1,4 +1,8 @@
 import api.printConsoleError
+import com.github.ajalt.mordant.animation.progressAnimation
+import com.github.ajalt.mordant.rendering.TextColors.*
+import com.github.ajalt.mordant.rendering.TextStyles.*
+import com.github.ajalt.mordant.terminal.Terminal
 import commands.about
 import commands.help
 import java.net.InetAddress
@@ -6,10 +10,8 @@ import java.lang.ProcessBuilder.Redirect
 import java.util.concurrent.TimeUnit
 import java.io.File
 import kotlin.system.exitProcess
-import com.github.ajalt.mordant.rendering.TextColors.*
-import com.github.ajalt.mordant.rendering.TextStyles.*
-import com.github.ajalt.mordant.terminal.Terminal
 
+val t = Terminal()
 var version = "v3.0.0.4.od"
 var username = System.getProperty("user.name")
 var osname = System.getProperty("os.name")
@@ -24,12 +26,10 @@ val strfshlxPath = "/home/$username/.local/share/.freeshell"
 val strfshwinPath = "C:/Users/$username/AppData/Roaming/.freeshell"
 val fshLinuxExists = freeshellLinuxPath.exists()
 val fshWindowsExists = freeshellWindowsPath.exists()
-
-val t = Terminal()
-
+var fpmIsEnabled = true;
 fun main(args: Array<String>){
     if (osname.startsWith("Windows")){
-        t.println("${yellow("NOTE:")} Windows commands are not well supported")
+        println("${ANSIHeaders.YELLOW} NOTE: ${ANSIHeaders.RESET}Windows commands are not well supported")
     }
     if ("-d" in args && args.isNotEmpty()) {
         println("DEBUG MODE ENABLED.")
@@ -42,23 +42,37 @@ fun main(args: Array<String>){
     }
 
     if (!fshLinuxExists || !freeshellLinuxPath.isDirectory && !fshWindowsExists || !freeshellWindowsPath.isDirectory) {
-        t.println("${yellow("WARN:")} Freeshell Config not found. Continuing with setup.")
+        println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
         Thread.sleep(2000)
-        t.println(bold("Freeshell Setup"))
-        t.println("---")
+        println("${ANSIHeaders.BOLD} Freeshell Setup ${ANSIHeaders.RESET}")
+        println("---")
         if (osname.startsWith("Windows")) {
             freeshellWindowsPath.mkdir();
         } else {
             freeshellLinuxPath.mkdir()
         }
-        t.println("Freeshell Setup 1. FPM")
+        val response = t.prompt("do you want to install FPM?", choices=listOf("yes", "no"))
+        t.println("You chose: $response")
+        if (response == "yes") {
+            println("Freeshell Setup. FPM")
 
-        t.println("Choose your fpm version (check https://github.com/project-novagon/fpm/releases/latest for the latest release)")
-        val fpmVer = readln()
-        t.println("${blue("i:")} Installing FPM...")
-        // Fuel.download("https://github.com/project-novagon/fpm/releases/download/v$version/fpm.py")
-
-        t.println("${green("!:")} FPM Installed")
+            println("Choose your fpm version (check https://github.com/project-novagon/fpm/releases/latest for the latest release)")
+            val fpmVer = readln()
+            println("${ANSIHeaders.BLUE} i:${ANSIHeaders.RESET} Installing FPM...")
+            // Fuel.download("https://github.com/project-novagon/fpm/releases/download/v$version/fpm.py")
+            val progress = t.progressAnimation {
+                text("my-file.iso")
+                percentage()
+                progressBar()
+                completed()
+                speed("B/s")
+                timeRemaining()
+            }
+            println("${ANSIHeaders.GREEN} !:${ANSIHeaders.RESET} FPM Installed")
+        }
+        else {
+            t.println("Skipping FPM.")
+        }
         //TODO: make the rest of the setup
         //curl -OJLs https://github.com/project-novagon/fpm/releases/download/v1.2.0/fpm.py
     } else {
