@@ -10,4 +10,4 @@
 
 ## Reporting a Vulnerability
 
-Report Vunerabilities on our [Discussion Page](https://github.com/project-novagon/freeshell/discussions/categories/general) or [Discord](https://discord.gg/VNx5mHqrCW)
+Report Vulnerabilities on our [Discussion Page](https://github.com/project-novagon/freeshell/discussions/categories/general) or [Discord](https://discord.gg/VNx5mHqrCW)
