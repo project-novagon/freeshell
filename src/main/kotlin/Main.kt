@@ -32,13 +32,14 @@ fun main(args: Array<String>){
 
     }
 
-    if (fshLinuxExists == false || !freeshellLinuxPath.isDirectory && fshWindowsExists == false || !freeshellWindowsPath.isDirectory) {
+    if (!fshLinuxExists && !freeshellLinuxPath.isDirectory && !fshWindowsExists && !freeshellWindowsPath.isDirectory) {
         println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
         Thread.sleep(2000)
         println("${ANSIHeaders.BOLD} Freeshell Setup ${ANSIHeaders.RESET}")
         println("---")
         println("Freeshell Setup 1. FPM")
-        println("Choose your fpm version (")
+        println("Choose your fpm version (check https://github.com/project-novagon/fpm/releases/latest for the latest release)")
+        val fpmVer = readln()
         //TODO: make the rest of the setup
         //curl -OJLs https://github.com/project-novagon/fpm/releases/download/v1.2.0/fpm.py
     } else {
