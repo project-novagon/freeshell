@@ -15,7 +15,7 @@ var homedir = System.getProperty("user.home")
 var cursor  = "${ANSIHeaders.CYAN}($username @ $computername : $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
 var shellCommands = arrayOf("fs", "exit", "cd", "fpm")
 val freeshellLinuxPath = File("/home/$username/.local/share/.freeshell")
-val freeshellWindowsPath = File("%APPDATA%\\.freeshell")
+val freeshellWindowsPath = File("C:/Users/$username/AppData/Roaming/.freeshell")
 val fshLinuxExists = freeshellLinuxPath.exists()
 val fshWindowsExists = freeshellWindowsPath.exists()
 fun main(args: Array<String>){
@@ -32,12 +32,13 @@ fun main(args: Array<String>){
 
     }
 
-    if (fshLinuxExists == false || !freeshellLinuxPath.isDirectory || fshWindowsExists == false || !freeshellWindowsPath.isDirectory) {
+    if (fshLinuxExists == false || !freeshellLinuxPath.isDirectory && fshWindowsExists == false || !freeshellWindowsPath.isDirectory) {
         println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
         Thread.sleep(2000)
         println("${ANSIHeaders.BOLD} Freeshell Setup ${ANSIHeaders.RESET}")
         println("---")
-
+        println("Freeshell Setup 1. FPM")
+        println("Choose your fpm version (")
         //TODO: make the rest of the setup
         //curl -OJLs https://github.com/project-novagon/fpm/releases/download/v1.2.0/fpm.py
     } else {
