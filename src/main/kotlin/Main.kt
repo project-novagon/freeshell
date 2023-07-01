@@ -22,6 +22,7 @@ val strfshlxPath = "/home/$username/.local/share/.freeshell"
 val strfshwinPath = "C:/Users/$username/AppData/Roaming/.freeshell"
 val fshLinuxExists = freeshellLinuxPath.exists()
 val fshWindowsExists = freeshellWindowsPath.exists()
+
 fun main(args: Array<String>){
     if (osname.startsWith("Windows")){
         println("${ANSIHeaders.YELLOW} NOTE: ${ANSIHeaders.RESET}Windows commands are not well supported")
@@ -52,7 +53,7 @@ fun main(args: Array<String>){
         val fpmVer = readln()
         println("${ANSIHeaders.BLUE} i:${ANSIHeaders.RESET} Installing FPM...")
         // Fuel.download("https://github.com/project-novagon/fpm/releases/download/v$version/fpm.py")
-        t.println(red("This text will be red on terminals that support color"))
+
         println("${ANSIHeaders.GREEN} !:${ANSIHeaders.RESET} FPM Installed")
         //TODO: make the rest of the setup
         //curl -OJLs https://github.com/project-novagon/fpm/releases/download/v1.2.0/fpm.py
