@@ -7,7 +7,6 @@ import java.lang.ProcessBuilder.Redirect
 import java.util.concurrent.TimeUnit
 import java.io.File
 import kotlin.system.exitProcess
-
 var version = "v3.0.0.4.od"
 var username = System.getProperty("user.name")
 var osname = System.getProperty("os.name")
