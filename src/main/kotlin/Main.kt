@@ -60,7 +60,7 @@ fun main(args: Array<String>){
     } else {
         while (true) {
             print(cursor)
-            val input = readln().split(" ")
+            val input = readln().split(" +".toRegex())
 
             if (shellCommands.contains(input[0])) {
                 executeCommand(true, input)
