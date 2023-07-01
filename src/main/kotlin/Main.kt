@@ -60,7 +60,7 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
             "fs" -> {
                 try {
                     when (command[1]) {
-                        "help" -> help(version)
+                        "help"  -> help(version)
                         "about" -> about(version)
                     } 
                 } catch (e: Exception) {
