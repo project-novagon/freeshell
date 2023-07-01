@@ -1,4 +1,5 @@
 import api.printConsoleError
+import com.github.kittinunf.fuel.Fuel
 import commands.about
 import commands.help
 import java.net.InetAddress
@@ -6,6 +7,7 @@ import java.lang.ProcessBuilder.Redirect
 import java.util.concurrent.TimeUnit
 import java.io.File
 import kotlin.system.exitProcess
+
 var version = "v3.0.0.4.od"
 var username = System.getProperty("user.name")
 var osname = System.getProperty("os.name")
@@ -16,6 +18,8 @@ var cursor  = "${ANSIHeaders.CYAN}($username @ $computername : $dir )${ANSIHeade
 var shellCommands = arrayOf("fs", "exit", "cd", "fpm")
 val freeshellLinuxPath = File("/home/$username/.local/share/.freeshell")
 val freeshellWindowsPath = File("C:/Users/$username/AppData/Roaming/.freeshell")
+val strfshlxPath = "/home/$username/.local/share/.freeshell"
+val strfshwinPath = "C:/Users/$username/AppData/Roaming/.freeshell"
 val fshLinuxExists = freeshellLinuxPath.exists()
 val fshWindowsExists = freeshellWindowsPath.exists()
 fun main(args: Array<String>){
@@ -32,21 +36,24 @@ fun main(args: Array<String>){
 
     }
 
-    if (!fshLinuxExists && !freeshellLinuxPath.isDirectory && !fshWindowsExists && !freeshellWindowsPath.isDirectory) {
+    if (!fshLinuxExists || !freeshellLinuxPath.isDirectory && !fshWindowsExists || !freeshellWindowsPath.isDirectory) {
         println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
         Thread.sleep(2000)
         println("${ANSIHeaders.BOLD} Freeshell Setup ${ANSIHeaders.RESET}")
         println("---")
-        if (osname.startsWith("Windows")){
+        if (osname.startsWith("Windows")) {
             freeshellWindowsPath.mkdir();
-        }else{
+        } else {
             freeshellLinuxPath.mkdir()
         }
         println("Freeshell Setup 1. FPM")
 
         println("Choose your fpm version (check https://github.com/project-novagon/fpm/releases/latest for the latest release)")
         val fpmVer = readln()
-        Runtime.getRuntime().exec("curl -JLs https://github.com/project-novagon/fpm/releases/download/v$fpmVer/fpm.py");
+        println("${ANSIHeaders.BLUE} i:${ANSIHeaders.RESET} Installing FPM...")
+        // Fuel.download("https://github.com/project-novagon/fpm/releases/download/v$version/fpm.py")
+        t.println(red("This text will be red on terminals that support color"))
+        println("${ANSIHeaders.GREEN} !:${ANSIHeaders.RESET} FPM Installed")
         //TODO: make the rest of the setup
         //curl -OJLs https://github.com/project-novagon/fpm/releases/download/v1.2.0/fpm.py
     } else {

@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="github.ajalt.mordant" type="repository">
+    <properties maven-id="com.github.ajalt.mordant:mordant:2.0.0-beta14" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/ajalt/mordant/mordant/2.0.0-beta14/mordant-2.0.0-beta14.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/ajalt/colormath/colormath/3.3.0/colormath-3.3.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-common/1.8.22/kotlin-stdlib-common-1.8.22.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/markdown/0.4.1/markdown-0.4.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/net/java/dev/jna/jna/5.13.0/jna-5.13.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
