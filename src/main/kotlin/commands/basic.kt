@@ -1,9 +1,11 @@
 package commands
 
+import t
+
 fun about(version: String){
     var devs = arrayOf("dvnlx", "mkukiro", "Arna13", "Havoc")
 
-    println("'########:'########::'########:'########::'######::'##::::'##:'########:'##:::::::'##:::::::\n" +
+    t.println("'########:'########::'########:'########::'######::'##::::'##:'########:'##:::::::'##:::::::\n" +
             " ##.....:: ##.... ##: ##.....:: ##.....::'##... ##: ##:::: ##: ##.....:: ##::::::: ##:::::::\n" +
             " ##::::::: ##:::: ##: ##::::::: ##::::::: ##:::..:: ##:::: ##: ##::::::: ##::::::: ##:::::::\n" +
             " ######::: ########:: ######::: ######:::. ######:: #########: ######::: ##::::::: ##:::::::\n" +
@@ -11,14 +13,13 @@ fun about(version: String){
             " ##::::::: ##::. ##:: ##::::::: ##:::::::'##::: ##: ##:::: ##: ##::::::: ##::::::: ##:::::::\n" +
             " ##::::::: ##:::. ##: ########: ########:. ######:: ##:::: ##: ########: ########: ########:\n" +
             "..::::::::..:::::..::........::........:::......:::..:::::..::........::........::........::")
-    println("freeshell $version");
-    println("by ${devs.joinToString(", ")}");
+    t.println("freeshell $version");
+    t.println("by ${devs.joinToString(", ")}");
 }
 
 fun help(version: String) {
-    println("Freeshell $version");
-    println("Commands:");
-    println("exit: Exits the shell");
-    println("fs about: About freeshell");
-
+    t.println("Freeshell $version");
+    t.println("Commands:");
+    t.println("exit: Exits the shell");
+    t.println("fs about: About freeshell");
 }
