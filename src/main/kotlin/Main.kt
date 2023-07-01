@@ -25,10 +25,16 @@ fun main(args: Array<String>){
         println("DEBUG MODE ENABLED.")
         println(username)
         println(osname)
+        println(freeshellLinuxPath)
+        println(freeshellWindowsPath)
+        println(freeshellLinuxPath.exists())
+
     }
+
     if (!freeshellLinuxPath.exists() && freeshellLinuxPath.isDirectory || !freeshellWindowsPath.exists() && freeshellWindowsPath.isDirectory) {
         println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
         Thread.sleep(2000)
+        clear()
         //TODO: make the rest of the setup
         //curl -OJLs https://github.com/project-novagon/fpm/releases/download/v1.2.0/fpm.py
     } else {

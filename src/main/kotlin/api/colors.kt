@@ -16,3 +16,7 @@ enum class ANSIHeaders(private val Code: String) {
         return Code
     }
 }
+fun clear(){
+    print("\u001b[H\u001b[2J")
+    System.out.flush()
+}
