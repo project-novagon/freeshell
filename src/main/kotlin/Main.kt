@@ -32,7 +32,7 @@ fun main(args: Array<String>){
 
     }
 
-    if (!fshLinuxExists && freeshellLinuxPath.isDirectory || !fshWindowsExists && freeshellWindowsPath.isDirectory) {
+    if (fshLinuxExists == false && freeshellLinuxPath.isDirectory || fshWindowsExists == false && freeshellWindowsPath.isDirectory) {
         println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
         Thread.sleep(2000)
         //TODO: make the rest of the setup
