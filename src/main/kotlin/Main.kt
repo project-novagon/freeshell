@@ -17,7 +17,7 @@ var osname = System.getProperty("os.name")
 var computername = InetAddress.getLocalHost().hostName
 var dir = System.getProperty("user.dir")
 var homedir = System.getProperty("user.home")
-var cursor  = "${ANSIHeaders.CYAN}($username @ $computername : $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
+var cursor  = ""
 var shellCommands = arrayOf("fs", "exit", "cd", "fpm")
 val freeshellLinuxPath = File("/home/$username/.local/share/.freeshell")
 val freeshellWindowsPath = File("C:/Users/$username/AppData/Roaming/.freeshell")
@@ -41,9 +41,9 @@ fun main(args: Array<String>){
     }
 
     if (!fshLinuxExists || !freeshellLinuxPath.isDirectory && !fshWindowsExists || !freeshellWindowsPath.isDirectory) {
-        println("${ANSIHeaders.YELLOW} WARN: ${ANSIHeaders.RESET}Freeshell Config not found. Continuing with setup.")
+        println("${yellow("!:")} Freeshell Config not found. Continuing with setup.")
         Thread.sleep(2000)
-        println("${ANSIHeaders.BOLD} Freeshell Setup ${ANSIHeaders.RESET}")
+        t.println("${ANSIHeaders.BOLD} Freeshell Setup ${ANSIHeaders.RESET}")
         println("---")
         if (osname.startsWith("Windows")) {
             freeshellWindowsPath.mkdir();
@@ -104,10 +104,10 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
             "cd" -> {
                 try {
                     dir = command[1]
-                    cursor  = "${ANSIHeaders.BLUE}($username @ $computername // $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
+                    cursor  = "${cyan("($username @ $computername : $dir )")} ${green("~>")} }"
                 } catch (e: Exception) {
                     dir = homedir 
-                    cursor  = "${ANSIHeaders.BLUE}($username @ $computername // $dir )${ANSIHeaders.GREEN} ~> ${ANSIHeaders.RESET}"
+                    cursor  = "${cyan("($username @ $computername : $dir )")} ${green("~>")} }"
                 }
             }
 
