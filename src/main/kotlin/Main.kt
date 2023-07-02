@@ -9,10 +9,7 @@ import kotlin.system.exitProcess
 import java.lang.ProcessBuilder.Redirect
 import java.util.concurrent.TimeUnit
 import java.io.File
-import com.github.kittinunf.fuel.Fuel
-
-
-
+import com.github.
 val t = Terminal()
 var version = "v3.0.0.4.od"
 var username = System.getProperty("user.name")
@@ -31,7 +28,7 @@ val fshWindowsExists = freeshellWindowsPath.exists()
 var fpmIsEnabled = true;
 fun main(args: Array<String>){
     if (osname.startsWith("Windows")){
-        println("${ANSIHeaders.YELLOW} NOTE: ${ANSIHeaders.RESET}Windows commands are not well supported")
+        println("${ANSIHeaders.YELL:OW} NOTE: ${ANSIHeaders.RESET}Windows commands are not well supported")
     }
     if ("-d" in args && args.isNotEmpty()) {
         println("DEBUG MODE ENABLED.")
@@ -53,13 +50,19 @@ fun main(args: Array<String>){
         } else {
             freeshellLinuxPath.mkdir()
         }
-        val response = t.prompt("do you want to install FPM?", choices=listOf("yes", "no"))
+        val response = t.prompt("${blue("?:")} do you want to install FPM?", choices=listOf("yes", "no"))
         t.println("You chose: $response")
         if (response == "yes") {
             t.println(bold("Freeshell Setup. FPM"))
-            t.prompt("Choose your fpm version (check https://github.com/project-novagon/fpm/releases/latest for the latest release)", choices= listOf("latest", "choose"))
+            t.prompt("${blue("?:")} Choose your fpm version (check https://github.com/project-novagon/fpm/releases/latest for the latest release)", choices= listOf("latest", "choose"))
             println("${ANSIHeaders.BLUE} i:${ANSIHeaders.RESET} Installing FPM...")
-            Fuel.download("https://github.com/project-novagon/fpm/releases/download/v$version/fpm.py")
+            Fuel.get("https://github.com/project-novagon/fpm/releases/download/v$version/fpm.py")
+                .response { request, response, result ->
+                    val (bytes, error) = result
+                    if (bytes != null) {
+                        File("path/goes/here").writeBytes(bytes)
+                    }
+                }
             println("${ANSIHeaders.GREEN} !:${ANSIHeaders.RESET} FPM Installed")
         }
         else {
@@ -70,7 +73,7 @@ fun main(args: Array<String>){
     } else {
         while (true) {
             print(cursor)
-            val input = t.readLineOrNull(false)!!.split(" +".toRegex())
+            val input = readln().split(" +".toRegex())
 
             if (shellCommands.contains(input[0])) {
                 executeCommand(true, input)
