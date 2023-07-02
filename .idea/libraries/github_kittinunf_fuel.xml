@@ -1,0 +1,29 @@
+<component name="libraryTable">
+  <library name="github.kittinunf.fuel" type="repository">
+    <properties maven-id="com.github.kittinunf.fuel:fuel:3.0.0-alpha1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/kittinunf/fuel/fuel/3.0.0-alpha1/fuel-3.0.0-alpha1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlinx/kotlinx-coroutines-core/1.6.4/kotlinx-coroutines-core-1.6.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.6.4/kotlinx-coroutines-core-jvm-1.6.4.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.6.21/kotlin-stdlib-jdk8-1.6.21.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib/1.6.21/kotlin-stdlib-1.6.21.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/13.0/annotations-13.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.6.21/kotlin-stdlib-jdk7-1.6.21.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-common/1.8.10/kotlin-stdlib-common-1.8.10.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/okio/okio/3.2.0/okio-3.2.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/okio/okio-jvm/3.2.0/okio-jvm-3.2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/github/kittinunf/fuel/fuel/3.0.0-alpha1/fuel-3.0.0-alpha1-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlinx/kotlinx-coroutines-core-jvm/1.6.4/kotlinx-coroutines-core-jvm-1.6.4-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.6.21/kotlin-stdlib-jdk8-1.6.21-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib/1.6.21/kotlin-stdlib-1.6.21-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/13.0/annotations-13.0-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.6.21/kotlin-stdlib-jdk7-1.6.21-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-common/1.8.10/kotlin-stdlib-common-1.8.10-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/okio/okio/3.2.0/okio-3.2.0-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/squareup/okio/okio-jvm/3.2.0/okio-jvm-3.2.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>
