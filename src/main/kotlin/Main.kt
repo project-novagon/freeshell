@@ -1,15 +1,17 @@
 import api.printConsoleError
-import com.github.ajalt.mordant.animation.progressAnimation
 import com.github.ajalt.mordant.rendering.TextColors.*
 import com.github.ajalt.mordant.rendering.TextStyles.*
 import com.github.ajalt.mordant.terminal.Terminal
 import commands.about
 import commands.help
 import java.net.InetAddress
+import kotlin.system.exitProcess
 import java.lang.ProcessBuilder.Redirect
 import java.util.concurrent.TimeUnit
 import java.io.File
-import kotlin.system.exitProcess
+import com.github.kittinunf.fuel.Fuel
+
+
 
 val t = Terminal()
 var version = "v3.0.0.4.od"
@@ -54,31 +56,21 @@ fun main(args: Array<String>){
         val response = t.prompt("do you want to install FPM?", choices=listOf("yes", "no"))
         t.println("You chose: $response")
         if (response == "yes") {
-            println("Freeshell Setup. FPM")
-
-            println("Choose your fpm version (check https://github.com/project-novagon/fpm/releases/latest for the latest release)")
-            val fpmVer = readln()
+            t.println(bold("Freeshell Setup. FPM"))
+            t.prompt("Choose your fpm version (check https://github.com/project-novagon/fpm/releases/latest for the latest release)", choices= listOf("latest", "choose"))
             println("${ANSIHeaders.BLUE} i:${ANSIHeaders.RESET} Installing FPM...")
-            // Fuel.download("https://github.com/project-novagon/fpm/releases/download/v$version/fpm.py")
-            val progress = t.progressAnimation {
-                text("my-file.iso")
-                percentage()
-                progressBar()
-                completed()
-                speed("B/s")
-                timeRemaining()
-            }
+            Fuel.download("https://github.com/project-novagon/fpm/releases/download/v$version/fpm.py")
             println("${ANSIHeaders.GREEN} !:${ANSIHeaders.RESET} FPM Installed")
         }
         else {
-            t.println("Skipping FPM.")
+            t.println("${green("i:")} ${white("Skipping FPM setup")}")
         }
         //TODO: make the rest of the setup
         //curl -OJLs https://github.com/project-novagon/fpm/releases/download/v1.2.0/fpm.py
     } else {
         while (true) {
             print(cursor)
-            val input = readln().split(" +".toRegex())
+            val input = t.readLineOrNull(false)!!.split(" +".toRegex())
 
             if (shellCommands.contains(input[0])) {
                 executeCommand(true, input)
