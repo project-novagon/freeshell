@@ -1,6 +1,12 @@
 import api.printConsoleError
+import api.printConsoleInfo
+import api.printConsoleWarning
+import api.questionSystem
+import com.github.ajalt.mordant.rendering.OverflowWrap
+import com.github.ajalt.mordant.rendering.TextAlign
 import com.github.ajalt.mordant.rendering.TextColors.*
 import com.github.ajalt.mordant.rendering.TextStyles.*
+import com.github.ajalt.mordant.rendering.Whitespace
 import com.github.ajalt.mordant.terminal.Terminal
 import commands.about
 import commands.help
@@ -10,7 +16,7 @@ import java.lang.ProcessBuilder.Redirect
 import java.util.concurrent.TimeUnit
 import java.io.File
 
-val t = Terminal()
+val terminal = Terminal()
 var version = "v3.0.0.4.od"
 var username = System.getProperty("user.name")
 var osname = System.getProperty("os.name")
@@ -28,7 +34,7 @@ val fshWindowsExists = freeshellWindowsPath.exists()
 var fpmIsEnabled = true;
 fun main(args: Array<String>){
     if (osname.startsWith("Windows")){
-        println("${ANSIHeaders.YELLOW} NOTE: ${ANSIHeaders.RESET}Windows commands are not well supported")
+        printConsoleWarning("Windows commands are not well supported")
     }
     if ("-d" in args && args.isNotEmpty()) {
         println("DEBUG MODE ENABLED.")
@@ -43,19 +49,18 @@ fun main(args: Array<String>){
     if (!fshLinuxExists || !freeshellLinuxPath.isDirectory && !fshWindowsExists || !freeshellWindowsPath.isDirectory) {
         println("${yellow("!:")} Freeshell Config not found. Continuing with setup.")
         Thread.sleep(2000)
-        t.println("${ANSIHeaders.BOLD} Freeshell Setup ${ANSIHeaders.RESET}")
+        terminal.println("Freeshell Setup", Whitespace.NORMAL, TextAlign.CENTER, OverflowWrap.NORMAL)
         println("---")
         if (osname.startsWith("Windows")) {
             freeshellWindowsPath.mkdir();
         } else {
             freeshellLinuxPath.mkdir()
         }
-        val response = t.prompt("${blue("?:")} do you want to install FPM?", choices=listOf("yes", "no"))
-        t.println("You chose: $response")
+        val response = questionSystem("Do you want to install FPM?", listOf("yes", "no"))
         if (response == "yes") {
-            t.println(bold("Freeshell Setup. FPM"))
-            t.prompt("${blue("?:")} Choose your fpm version (check https://github.com/project-novagon/fpm/releases/latest for the latest release)", choices= listOf("latest", "choose"))
-            println("${ANSIHeaders.BLUE} i:${ANSIHeaders.RESET} Installing FPM...")
+            terminal.println(bold("Freeshell Setup. FPM"))
+            terminal.prompt("${blue("?:")} Choose your fpm version (check https://github.com/project-novagon/fpm/releases/latest for the latest release)", choices= listOf("latest", "choose"))
+            printConsoleInfo("Installing FPM...", false)
             /*
 
                 Fuel.get("https://github.com/project-novagon/fpm/releases/download/v$version/fpm.py")
@@ -66,10 +71,11 @@ fun main(args: Array<String>){
                         }
                     }
             */
-            println("${ANSIHeaders.GREEN} !:${ANSIHeaders.RESET} FPM Installed")
+            printConsoleInfo("FPM Installed!", true)
+
         }
         else {
-            t.println("${green("i:")} ${white("Skipping FPM setup")}")
+            terminal.println("${green("i:")} ${white("Skipping FPM setup")}")
         }
         //TODO: make the rest of the setup
         //curl -OJLs https://github.com/project-novagon/fpm/releases/download/v1.2.0/fpm.py
@@ -117,7 +123,7 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
         try {
             command.joinToString(separator=" ").run(File(dir))
         } catch (e: Exception) {
-            printConsoleError("FS01", command.joinToString(separator=" "))
+            printConsoleError("FS01", "${command.joinToString(separator=" ")} not found. type \"fs help\" for help")
         }
     }
 }
