@@ -1,6 +1,5 @@
 package api
 import com.github.ajalt.mordant.rendering.TextColors.*
-import com.github.ajalt.mordant.rendering.TextStyles.*
 import terminal
 
 fun printConsoleError(code:String, body: String) {
