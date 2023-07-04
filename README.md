@@ -1,4 +1,4 @@
-<img align="right" height="145" src="https://novagoncdn.netlify.app/logo/freeshell/Freeshell%20Icon.png">
+<img align="right" height="145" src="https://novagoncdn.netlify.app/logo/freeshell/v3/icon%402x.png">
 
 # Freeshell ![cat ^w^](https://nukocities.neocities.org/nuko/react/cat12.gif)
 
