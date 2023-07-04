@@ -1,0 +1,27 @@
+<component name="ArtifactManager">
+  <artifact name="freeshell:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/freeshell_jar</output-path>
+    <root id="root">
+      <element id="archive" name="freeshell.jar">
+        <element id="module-output" name="freeshell" />
+      </element>
+      <element id="directory" name="lib">
+        <element id="library" level="project" name="github.ajalt.mordant" />
+        <element id="library" level="project" name="KotlinJavaRuntime" />
+        <element id="library" level="project" name="Maven: com.github.ajalt.colormath:colormath-jvm:3.2.1" />
+        <element id="library" level="project" name="Maven: com.github.ajalt.colormath:colormath:3.2.1" />
+        <element id="library" level="project" name="Maven: com.github.ajalt.mordant:mordant-jvm:2.0.0-beta11" />
+        <element id="library" level="project" name="Maven: com.github.ajalt.mordant:mordant:2.0.0-beta11" />
+        <element id="library" level="project" name="Maven: net.java.dev.jna:jna:5.12.1" />
+        <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-common:1.8.0" />
+        <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0" />
+        <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0" />
+        <element id="library" level="project" name="Maven: org.jetbrains.kotlin:kotlin-stdlib:1.8.0" />
+        <element id="library" level="project" name="Maven: org.jetbrains:annotations:13.0" />
+        <element id="library" level="project" name="Maven: org.jetbrains:markdown-jvm:0.3.6" />
+        <element id="library" level="project" name="Maven: org.jetbrains:markdown:0.3.6" />
+        <element id="library" level="project" name="squareup.okhttp3.okhttp" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,3 +1,10 @@
 Manifest-Version: 1.0
 Main-Class: MainKt
+Class-Path: lib/kotlin-stdlib-jdk8-1.8.0.jar lib/annotations-13.0.jar lib/colormath-
+ 3.2.1.jar lib/mordant-jvm-2.0.0-beta11.jar lib/colormath-jvm-3.2.1.jar lib/mordant-
+ 2.0.0-beta11.jar lib/markdown-0.3.6.jar lib/kotlin-stdlib-jdk7-1.8.0.jar lib/okhttp
+ -4.10.0.jar lib/okio-jvm-3.0.0.jar lib/kotlin-stdlib-jdk8-1.5.31.jar lib/kotlin-std
+ lib-jdk7-1.5.31.jar lib/kotlin-stdlib-common-1.5.31.jar lib/kotlin-stdlib-1.6.2
+ 0.jar lib/annotations-13.0.jar lib/jna-5.12.1.jar lib/markdown-jvm-0.3.6.jar lib/kotlin
+ -stdlib-common-1.8.0.jar lib/kotlin-stdlib-1.8.0.jar
 

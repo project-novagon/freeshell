@@ -136,6 +136,10 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
                 }
             }
 
+            "fpm"  -> {
+                
+            }
+
             "exit" -> exitProcess(0)
         }
     } else {
