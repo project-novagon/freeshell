@@ -129,10 +129,10 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
             "cd" -> {
                 try {
                     dir = command[1]
-                    cursor  = "${cyan("($username @ $computername : $dir )")} ${green("~>")} }"
+                    cursor  = "${cyan("($username @ $computername : $dir )")} ${green("~>")} "
                 } catch (e: Exception) {
                     dir = homedir 
-                    cursor  = "${cyan("($username @ $computername : $dir )")} ${green("~>")} }"
+                    cursor  = "${cyan("($username @ $computername : $dir )")} ${green("~>")} "
                 }
             }
 
