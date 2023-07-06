@@ -21,7 +21,7 @@ import java.io.IOException
 
 val okHttpClient = OkHttpClient()
 val terminal = Terminal()
-var version = "v3.0.0.4.od"
+var version = "v3.0.0.1"
 var username = System.getProperty("user.name")
 var osname = System.getProperty("os.name")
 var computername = InetAddress.getLocalHost().hostName
