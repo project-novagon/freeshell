@@ -11,6 +11,7 @@
 ![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/project-novagon/freeshell?label=Latest%20Tag&color=purple)
 
 This version of Freeshell is a replacement of Freeshell Classic (v2)
-
+NOTE: Windows Support Will be dropped in beta 2
 ## Requirements
-Java 20 is required for running Freeshell.
+- Java 20
+- Linux
