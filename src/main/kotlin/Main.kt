@@ -2,6 +2,7 @@ import api.printConsoleError
 import api.printConsoleInfo
 import api.printConsoleWarning
 import api.questionSystem
+import com.github.ajalt.mordant.markdown.Markdown
 import com.github.ajalt.mordant.rendering.OverflowWrap
 import com.github.ajalt.mordant.rendering.TextAlign
 import com.github.ajalt.mordant.rendering.TextColors.*
@@ -38,8 +39,7 @@ val strfshlxPath = "/home/$username/.local/share/.freeshell"
 val strfshwinPath = "C:/Users/$username/AppData/Roaming/.freeshell"
 val fshLinuxExists = freeshellLinuxPath.exists()
 val fshWindowsExists = freeshellWindowsPath.exists()
-var fpmIsEnabled = true;
-
+var fpmIsEnabled = true
 fun main(args: Array<String>){
     if (osname.startsWith("Windows")){
         printConsoleError("FS03", "Cant run freeshell on windows! exiting now")
@@ -91,26 +91,16 @@ fun main(args: Array<String>){
                 File("${if (osname.startsWith("Windows")) "$fpmWindowsPath/fpm.py" else "$fpmLinuxPath/fpm.py"}").writeBytes(fpmfile.body!!.bytes())
             }
             printConsoleInfo("Changing Permissions for FPM...", false)
-            try {
-                val process = ProcessBuilder("chmod +x ${if (osname.startsWith("Windows")) "$fpmWindowsPath/fpm.py" else "$fpmLinuxPath/fpm.py"}")
-                    .redirectOutput(Redirect.INHERIT)
-                    .redirectError(Redirect.INHERIT)
-                    .start()
-                printConsoleInfo("FPM Installed!", true)
-            } catch (e: Exception) {
-                printConsoleError("FS02", "Could not change Permissions")
-                if ("-d" in args && args.isNotEmpty()) {
-                   println(e)
-                }
-            }
-
+            val fpmPath = File(if (osname.startsWith("Windows")) "$fpmWindowsPath/fpm.py" else "$fpmLinuxPath/fpm.py")
+            fpmPath.setExecutable(true)
+            fpmPath.setReadable(true)
+            printConsoleInfo("Changed Permissions", true)
 
         }
         else {
-            terminal.println("${green("i:")} ${white("Skipping FPM setup")}")
+            printConsoleInfo("Skipping FPM", false)
         }
         //TODO: make the rest of the setup
-        //curl -OJLs https://github.com/project-novagon/fpm/releases/download/v1.2.0/fpm.py
     } else {
         while (true) {
             print(cursor)
@@ -133,6 +123,13 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
                     when (command[1]) {
                         "help"  -> help(version)
                         "about" -> about(version)
+                        "gh"    -> {
+                            when(command[2]) {
+                                "readme" -> {
+                                    terminal.print(Markdown("# Readme Reader (freeshell)"))
+                                }
+                            }
+                        }
                     } 
                 } catch (e: Exception) {
                     help(version)
@@ -150,7 +147,14 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
             }
 
             "fpm" -> {
-
+                when(command[1]){
+                    "run" -> {
+                        TODO()
+                    }
+                    "update" -> {
+                        TODO()
+                    }
+                }
             }
 
             "exit" -> exitProcess(0)
