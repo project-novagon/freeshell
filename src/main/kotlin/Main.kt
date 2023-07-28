@@ -2,6 +2,7 @@ import api.printConsoleError
 import api.printConsoleInfo
 import api.printConsoleWarning
 import api.questionSystem
+import api.setup.setupStarter.setupInit
 import com.github.ajalt.mordant.markdown.Markdown
 import com.github.ajalt.mordant.rendering.OverflowWrap
 import com.github.ajalt.mordant.rendering.TextAlign
@@ -35,11 +36,8 @@ val fpmLinuxPath = File("/home/$username/.local/share/.freeshell/fpm")
 val freeshellWindowsPath = File("C:/Users/$username/AppData/Roaming/.freeshell")
 val fpmWindowsPath = File("C:/Users/$username/AppData/Roaming/.freeshell")
 
-val strfshlxPath = "/home/$username/.local/share/.freeshell"
-val strfshwinPath = "C:/Users/$username/AppData/Roaming/.freeshell"
 val fshLinuxExists = freeshellLinuxPath.exists()
 val fshWindowsExists = freeshellWindowsPath.exists()
-var fpmIsEnabled = true
 fun main(args: Array<String>){
     if (osname.startsWith("Windows")){
         printConsoleError("FS03", "Cant run freeshell on windows! exiting now")
@@ -56,50 +54,7 @@ fun main(args: Array<String>){
     }
 
     if (!fshLinuxExists && !freeshellLinuxPath.isDirectory && !fshWindowsExists && !freeshellWindowsPath.isDirectory) {
-        println("${yellow("!:")} Freeshell Config not found. Continuing with setup.")
-        Thread.sleep(2000)
-        terminal.println("Freeshell Setup", Whitespace.NORMAL, TextAlign.CENTER, OverflowWrap.NORMAL)
-        println("---")
-        if (osname.startsWith("Windows")) {
-            freeshellWindowsPath.mkdir()
-        } else {
-            freeshellLinuxPath.mkdir()
-        }
-        val installFPM = questionSystem("Do you want to install FPM?", listOf("yes", "no"))
-        if (installFPM == "yes") {
-            terminal.println(bold("Freeshell Setup. FPM"))
-            if (osname.startsWith("Windows")) fpmWindowsPath.mkdir() else fpmLinuxPath.mkdir()
-            printConsoleWarning("Automatically installing latest FPM verison...")
-
-            val request = Request.Builder()
-                .url("https://api.github.com/repos/project-novagon/fpm/releases/latest")
-                .build()
-
-            okHttpClient.newCall(request).execute().use { response ->
-                if (!response.isSuccessful) throw IOException("Unexpected code $response")
-
-                val latestRelease = response.body!!.string()
-                val tagName = latestRelease.substringAfter("\"tag_name\":\"").substringBefore("\",\"target_commitish\"")
-                println(tagName)
-
-                printConsoleInfo("Installing FPM...", false)
-                val fpmRequest = Request.Builder()
-                    .url("https://github.com/project-novagon/fpm/releases/download/$tagName/fpm.py")
-                    .build()
-
-                val fpmfile = okHttpClient.newCall(fpmRequest).execute()
-                File("${if (osname.startsWith("Windows")) "$fpmWindowsPath/fpm.py" else "$fpmLinuxPath/fpm.py"}").writeBytes(fpmfile.body!!.bytes())
-            }
-            printConsoleInfo("Changing Permissions for FPM...", false)
-            val fpmPath = File(if (osname.startsWith("Windows")) "$fpmWindowsPath/fpm.py" else "$fpmLinuxPath/fpm.py")
-            fpmPath.setExecutable(true)
-            fpmPath.setReadable(true)
-            printConsoleInfo("Changed Permissions", true)
-
-        }
-        else {
-            printConsoleInfo("Skipping FPM", false)
-        }
+        setupInit()
         //TODO: make the rest of the setup
     } else {
         while (true) {
@@ -149,10 +104,10 @@ private fun executeCommand(isInternal: Boolean, command: List<String>) {
             "fpm" -> {
                 when(command[1]){
                     "run" -> {
-                        TODO()
+                        val process = ProcessBuilder(if (osname.startsWith("Windows")) "$fpmWindowsPath/fpm.py" else "$fpmLinuxPath/fpm.py").start()
                     }
                     "update" -> {
-                        TODO()
+                        TODO("We're working on the update system!")
                     }
                 }
             }
