@@ -15,3 +15,9 @@ NOTE: Windows Support Will be dropped in beta 2
 ## Requirements
 - Java 20
 - Linux
+  
+---
+
+original versions by @dvnlx
+
+idea for v3 by @mkukiro
