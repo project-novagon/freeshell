@@ -1,29 +1,21 @@
 import api.printConsoleError
-import api.printConsoleInfo
-import api.printConsoleWarning
-import api.questionSystem
 import api.setup.setupStarter.setupInit
 import com.github.ajalt.mordant.markdown.Markdown
-import com.github.ajalt.mordant.rendering.OverflowWrap
-import com.github.ajalt.mordant.rendering.TextAlign
-import com.github.ajalt.mordant.rendering.TextColors.*
-import com.github.ajalt.mordant.rendering.TextStyles.*
-import com.github.ajalt.mordant.rendering.Whitespace
+import com.github.ajalt.mordant.rendering.TextColors.cyan
+import com.github.ajalt.mordant.rendering.TextColors.green
 import com.github.ajalt.mordant.terminal.Terminal
 import commands.about
 import commands.help
 import okhttp3.OkHttpClient
-import okhttp3.Request
-import java.net.InetAddress
-import kotlin.system.exitProcess
-import java.lang.ProcessBuilder.Redirect
-import java.util.concurrent.TimeUnit
 import java.io.File
-import java.io.IOException
+import java.lang.ProcessBuilder.Redirect
+import java.net.InetAddress
+import java.util.concurrent.TimeUnit
+import kotlin.system.exitProcess
 
 val okHttpClient = OkHttpClient()
 val terminal = Terminal()
-var version = "v3.0.0.1"
+var version = "v3.0.0.2"
 var username = System.getProperty("user.name")
 var osname = System.getProperty("os.name")
 var computername = InetAddress.getLocalHost().hostName
